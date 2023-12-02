@@ -1,0 +1,65 @@
+main {
+    background: #0B1C2D;
+}
+
+.footer {
+
+    background: #24366e;
+    width: 400px;
+    margin: 4rem auto;
+    border-radius: .5rem;
+
+    @media(min-width: 768px){
+        display: flex; 
+    }
+    .err-message {
+        color: white;
+        display: flex;
+    }
+
+    .sub-text {
+        color: white;
+        padding: 2rem 1.6rem 0;
+        font-size: 15px;
+        
+    }
+
+    .sub-texts p {
+        color: white;
+        font-weight: bold;
+    }
+
+    @media(min-width: 768px){
+        width: 800px; 
+    }
+}
+
+.flex {
+    padding: 2rem;
+
+    .input-btn input{
+        padding: .5rem;
+        border: 1px solid gray;
+        border-radius: .3rem;
+        margin-bottom: 1.5rem;
+        
+        pattern {
+            color: white;
+        }
+    }
+
+    .btn input {
+        border: 1px solid gray;
+        padding: .5rem 1.2rem;
+        border-radius: 5rem;
+        color: gray;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    @media(min-width: 768px){
+        display: flex; 
+        justify-content: center;
+        gap: 2rem;
+        padding-top: 3rem;
+    }
+}
