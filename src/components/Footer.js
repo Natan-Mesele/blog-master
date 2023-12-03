@@ -18,6 +18,8 @@ import emailjs from '@emailjs/browser';
 
   return (
     <div>
+      <Containers>
+      <Container>
         <div className="App">
           <h1 className="page__title">Contact Us</h1>
           <form className="contact__form" onSubmit={sendEmail}>
@@ -30,13 +32,14 @@ import emailjs from '@emailjs/browser';
           </button>
           </form>
         </div>
-        <Container>
-          <Twitter style={{ fontSize: '2.5rem' }} /> 
-          <LinkedIn style={{ fontSize: '2.5rem' }} />
-          <Facebook style={{ fontSize: '2.5rem' }} />
-          <Instagram style={{ fontSize: '2.5rem' }} />
-          <Youtube style={{ fontSize: '2.5rem' }} />
-          <Wifi style={{ fontSize: '2.5rem' }} />
+          <Media>
+            <Twitter style={{ fontSize: '2.5rem' }} /> 
+            <LinkedIn style={{ fontSize: '2.5rem' }} />
+            <Facebook style={{ fontSize: '2.5rem' }} />
+            <Instagram style={{ fontSize: '2.5rem' }} />
+            <Youtube style={{ fontSize: '2.5rem' }} />
+            <Wifi style={{ fontSize: '2.5rem' }} />
+          </Media>
         </Container>
         <Footers>
             <FooterRow>
@@ -52,20 +55,32 @@ import emailjs from '@emailjs/browser';
               <span>Live report</span>
             </FooterRow>
         </Footers>
+        </Containers>
       </div>
   )
 }
 
 export default Footer
 
+const Containers = styled.div`
+  background: #24366e;
+`
+
 const Container = styled.div`
   display: flex;
   justify-content: center;
+  flex-direction: column;
   gap: 2rem;
   color: white;
   padding: 0 0 2rem;
   cursor: pointer;
 ` 
+
+const Media = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+`
 
 const Facebook = styled(FacebookIcon)`
 
