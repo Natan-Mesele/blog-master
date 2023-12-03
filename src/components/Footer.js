@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
-import './Footer.css';
+import React from "react";
 import styled from "styled-components";
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
@@ -8,93 +6,29 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import RssFeedIcon from '@material-ui/icons/RssFeed';
+import SendIcon from '@material-ui/icons/Send';
+import emailjs from '@emailjs/browser';
 
-const Footer = () => {
-  // handle events
-  const {
-    register,
-    handleSubmit,
-    reset,
-    watch,
-    trigger,
-    formState: { errors },
-  } = useForm();
+  function Footer() {
+    const sendEmail = (e) => {
+      e.preventDefault();
 
-  // handle notification
-  const [notification, setNotification] = useState(true);
-
-  // handle submit
-  const onSubmit = (data) => {
-    console.log('data', data);
-    setNotification(true)
-    reset()
-  }
-
-  // handle timer for notification
-  useEffect(() =>{
-    let timer;
-    if(notification){
-      timer = setTimeout(() =>{
-        setNotification(false)
-      }, 10000)
+      emailjs.sendForm('service_tr8x3hy', 'template_r9zhhsw', e.target, '9vleV_fPHIFflL966');
     }
-    return () =>clearTimeout(timer)
-  },[notification])
-  return (
-    <React.Fragment>
-      <main>
-        <div className="footer-section">
-          <div className="footer">
-            <p className="sub-text">
-            <span>Stay connected.</span> Get news, updates, and information about ways we can all grow and protect the Internet.
-            </p>
-            {notification && (
-              <div className='sub-texts'>
-                <p>Thanks for Subscribing to the X company news!</p>
-              </div>
-            )}
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <div>
-                {/* body */}
-                <div className="flex">
-                  <div class="input-btn">
-                    <input
-                      type="email"
-                      autoComplete="off"
-                      placeholder="Your Email Address"
-                      className='validation'
-                      {...register("email", {
-                        required: false,
-                        pattern: {
-                          value: /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/,
-                          message: "Please enter a valid email",
-                        },
-                      })}
-                      onKeyUp={() => {
-                        trigger("email");
-                      }}
-                    />
-                
-                  </div>
-                  
 
-                  {/* btn section */}
-                  <div className="btn">
-                    <input
-                      type="submit"
-                      value="Subscribe"
-                      className=" "
-                    />
-                  </div>
-                </div>
-                {errors.email && (
-                      <span className="err-message">
-                        {errors.email.message}
-                      </span>
-                    )}
-              </div>
-            </form>
-          </div>
+  return (
+    <div>
+        <div className="App">
+          <h1 className="page__title">Contact Us</h1>
+          <form className="contact__form" onSubmit={sendEmail}>
+            <label htmlFor="emailFrom">Email:</label>
+            <input type="text" name="email_from" id="emailFrom" className="email__from" placeholder="person@example.com"/>
+            <label htmlFor="message">Message:</label>
+            <textarea name="message" id="message" className="message__box"></textarea>
+            <button variant="contained" endIcon={<SendIcon />} className="submit__btn" style={{marginTop: "5px"}}>
+            Send
+          </button>
+          </form>
         </div>
         <Container>
           <Twitter style={{ fontSize: '2.5rem' }} /> 
@@ -118,12 +52,11 @@ const Footer = () => {
               <span>Live report</span>
             </FooterRow>
         </Footers>
-      </main>
-    </React.Fragment>
-  );
-};
+      </div>
+  )
+}
 
-export default Footer;
+export default Footer
 
 const Container = styled.div`
   display: flex;
