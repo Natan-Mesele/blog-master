@@ -24,7 +24,7 @@ import emailjs from '@emailjs/browser';
           <h1 className="page__title">Contact Us</h1>
           <form className="contact__form" onSubmit={sendEmail}>
             <label htmlFor="emailFrom">Email:</label>
-            <input type="text" name="email_from" id="emailFrom" className="email__from" placeholder="person@example.com"/>
+            <input type="text" name="email_from" id="emailFrom" className="email__from" placeholder="Your Email "/>
             <label htmlFor="message">Message:</label>
             <textarea name="message" id="message" className="message__box"></textarea>
             <button variant="contained" endIcon={<SendIcon />} className="submit__btn" style={{marginTop: "5px"}}>
@@ -74,6 +74,44 @@ const Container = styled.div`
   color: white;
   padding: 0 0 2rem;
   cursor: pointer;
+
+  label {
+    display: block;
+    margin: 1rem 0;
+    
+  }
+
+   input {
+    display: block;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+    padding: .5rem;
+    border: 1px solid gray;
+    border-radius: .3rem;
+    outline: none;
+  }
+
+  textarea {
+    display: block;
+    align-items: center;
+    margin-bottom: .5rem;
+    width: 80%;
+    height: 5rem;
+    margin: 0 auto;
+    padding: .5rem;
+    border: 1px solid gray;
+    border-radius: .3rem;
+    outline: none;
+    margin-bottom: 1rem;
+  }
+
+  button {
+    padding: .6rem 1.4rem;
+    border: none;
+    border-radius: 5em;
+    cursor: pointer;
+  }
 ` 
 
 const Media = styled.div`
