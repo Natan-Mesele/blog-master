@@ -13,7 +13,10 @@ import emailjs from '@emailjs/browser';
     const sendEmail = (e) => {
       e.preventDefault();
 
-      emailjs.sendForm('service_tr8x3hy', 'template_r9zhhsw', e.target, '9vleV_fPHIFflL966');
+      emailjs.sendForm('service_tr8x3hy', 'template_r9zhhsw', e.target, '9vleV_fPHIFflL966')
+      .then((response) => {
+        console.log("Email sent successfully!", response);
+      })
     }
 
   return (
@@ -25,7 +28,7 @@ import emailjs from '@emailjs/browser';
           <form className="contact__form" onSubmit={sendEmail}>
             <label htmlFor="emailFrom">Stay connected. Get news, updates, and information about ways we can all grow and protect the Internet.</label>
             <input type="text" name="email_from" id="emailFrom" className="email__from" placeholder="Your Email "/>
-            <button variant="contained" endIcon={<SendIcon />} className="submit__btn" style={{marginTop: "5px"}}>Send
+            <button variant="contained" endIcon={<SendIcon />} className="submit__btn" style={{marginTop: "5px"}}>Subscribe
           </button>
           </form>
         </div>
@@ -106,6 +109,7 @@ const Container = styled.div`
     border-radius: 5em;
     cursor: pointer;
     background: lightgray;
+    font-weight: bold;
 
     &:hover {
       background: white;

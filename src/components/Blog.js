@@ -298,4 +298,10 @@ const SearchInput = styled.input`
 
 const Pagination = styled.div`
   padding: 2rem;
+  
+  button {
+    padding: .3rem .4rem;
+    border: 1px solid gray;
+    cursor: pointer;
+  }
 `
