@@ -16,6 +16,28 @@ function Detail() {
             We are the I nternet Society. People are at the heart of our mission.
         </p>
         </Item>
+        <Info>
+            <h1>What We Do</h1>
+            <p>We believe everyone should be able to benefit from an open and trusted Internet. This value forms the pillars of our work.</p>
+
+            <InfoList>
+                <li>
+                    <img src="img/girl-encryption.jpg"/>
+                    <h3>1 in 3 people lack Internet access.</h3>
+                    <p>Because everyone should have access to this life-changing resource, we are passionate about closing the digital divide.</p>
+                </li>
+                <li>
+                    <img src="img/girl-encryption.jpg"/>
+                    <h3>1 in 3 people lack Internet access.</h3>
+                    <p>Because everyone should have access to this life-changing resource, we are passionate about closing the digital divide.</p>
+                </li>
+                <li>
+                    <img src="img/girl-encryption.jpg"/>
+                    <h3>1 in 3 people lack Internet access.</h3>
+                    <p>Because everyone should have access to this life-changing resource, we are passionate about closing the digital divide.</p>
+                </li>
+            </InfoList>
+        </Info>
     </Container>
   )
 }
@@ -36,10 +58,13 @@ const Container = styled.div`
 `
 const Item =styled.div`
    text-align: center;
-   padding: 0 10rem;
+   padding: 0 1rem;
 
+   @media(min-width: 768px){
+    padding: 2rem 12rem;
+    }
+    
     p {
-        padding-top: 4rem;
         font-weight: normal;
         text-align: left;
         line-height: 1.8rem;
@@ -48,7 +73,12 @@ const Item =styled.div`
 
 const ItemText = styled.div`
     text-align: center;
-    padding: 25vh 14rem;
+    padding: 25vh 1rem;
+
+    @media(min-width: 768px){
+        padding: 25vh 14rem;
+    }
+
     h1 {
         
         text-align: left;
@@ -60,5 +90,26 @@ const ItemText = styled.div`
         text-align: left;
         color: white;
         font-size: 1.8rem;
+    }
+`
+const Info = styled.div`
+    background: rgb(239, 242, 236);
+`
+const InfoList = styled.div`
+    margin: .5rem;
+    padding: 1rem;
+
+    @media(min-width: 768px){
+        display: grid;
+        gap: 50px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        padding: 8rem;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        
     }
 `
