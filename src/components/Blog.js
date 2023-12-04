@@ -138,7 +138,7 @@ function Blog() {
                       <span>{blog.data.description["published-date"]}</span>
                     </Date>
                     <Title>
-                      <Link to="./detail">{blog.data.title[0].text}</Link>
+                      <Link to="./">{blog.data.title[0].text}</Link>
                     </Title>
                     <Desc>
                       <p>{blog.data.description[0].text}</p>
