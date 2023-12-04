@@ -3,6 +3,7 @@ import styled from "styled-components"
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
 import SearchIcon from '@material-ui/icons/Search';
+import { Link } from "react-router-dom";
 
 function Header() {
 
@@ -32,10 +33,11 @@ function Header() {
           <img src="img/blog-high-resolution-logo-white-transparent.png" alt="logo"/>
         </a>
         <Menu>
-          <a href="#">About Us</a>
-          <a href="#">Our Work</a>
-          <a href="#">Our impact</a>
-          <a href="#">Participate</a>
+          <Link to="./">Home</Link>
+          <Link to="./about">About Us</Link>
+          <Link to="./about">Our Work</Link>
+          <Link to="./about">Our impact</Link>
+          <Link to="./about">Participate</Link>
         </Menu>
         <RightMenu>
             <SearchWrapper>

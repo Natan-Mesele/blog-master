@@ -2,6 +2,7 @@ import React from 'react'
 import styled from "styled-components"
 import Blog from './Blog'
 import Footer from './Footer'
+import { Link } from "react-router-dom";
 
 function Hero() {
   return (
@@ -9,7 +10,7 @@ function Hero() {
         <Container>
             <ItemText>
                 <h1>We believe in a world where the Internet is synonymous with opportunity. We care about its future.</h1>
-                <a href="#">Learn more about us</a>
+                <Link to="./about">Learn more about us</Link>
             </ItemText>
         </Container>
         <Blog />
@@ -27,7 +28,7 @@ const Container = styled.div`
     min-height: calc(100vh - 70px);
     width: 100vw;
     height: 100vh;
-    background-image: url('img/background1.jpg');
+    background-image: url('img/Ulukhaktok.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: norepeat;
