@@ -33,7 +33,12 @@ function Blog() {
 
   const [blogList, setBlogList] = useState([]);
   const [filtered, setFiltered] = useState([]);
+  const [visibleBlogs, setVisibleBlogs] = useState([]);
   const [filterValuem, setFilterValue] = useState("");
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  const [pageNumber, setPageNumber] = useState(0);
+  const blogPerPage = 8;
 
   const getRef = async () => {
     await axios.get("https://new-blo.prismic.io/api/v2").then((ref) => {
@@ -42,7 +47,6 @@ function Blog() {
     });
   };
   const getBlog = async (ref) => {
-    
     await axios
       .get(
         `https://new-blo.prismic.io/api/v2/documents/search?ref=${ref}#format=json`
@@ -51,6 +55,7 @@ function Blog() {
         console.log(ref.data.results, "data fetch");
         setBlogList(ref.data.results);
         setFiltered(ref.data.results);
+        setIsLoaded(true);
       });
   };
 
@@ -58,25 +63,39 @@ function Blog() {
     getRef();
   }, []);
 
-
   console.log(filterValuem);
 
   const handelFiltereByKeyWord = (e) => {
     setFilterValue(e.target.value);
-    JSON.parse(JSON.stringify(blogList))
-      .filter((blog) => blog.data["blog-image"] != null)
-      .filter((blog) =>
-       { console.log(
-          blog.data.title[0].text.indexOf(filterValuem),
-          "indedx"
-        )}
-      );
     setFiltered(
       JSON.parse(JSON.stringify(blogList))
         .filter((blog) => blog.data["blog-image"] != null)
-        .filter((blog) => blog.data.title[0].text.indexOf(filterValuem) > -1)
+        .filter((blog) => blog.data.title[0].text.toLowerCase().indexOf(e.target.value.toLowerCase()) > -1)
     );
   };
+  const handelFiltereByCategory = (e) => {
+    setFilterValue(e.target.value);
+    setFiltered(
+      JSON.parse(JSON.stringify(blogList))
+        .filter((blog) => blog.data["blog-image"] != null)
+        .filter((blog) => blog.data.title[0].text.indexOf(e.target.value) > -1)
+    );
+  };
+
+  const paginateHandler = (page) => {
+    const newlist = filtered.slice(
+      blogPerPage * page,
+      blogPerPage * page + blogPerPage
+    );
+    // setVisibleBlogs(newlist);
+  };
+
+  useEffect(() => {
+    if (isLoaded) {
+      paginateHandler(pageNumber);
+    }
+  }, [isLoaded]);
+
   return (
     <div className="App">
       <SearchContainer>
@@ -103,7 +122,11 @@ function Blog() {
       </SearchContainer>
       <React.Fragment>
         <Container>
-          {filtered
+          {//visibleBlogs //.slice(blogPerPage*pageNumber, blogPerPage)
+         [...filtered.slice(
+            blogPerPage * pageNumber,
+            (blogPerPage * pageNumber) + blogPerPage
+          )]
             .filter((blog) => blog.data["blog-image"] != null)
             .map((blog) => {
               // console.log(blog,"each blog")
@@ -126,6 +149,48 @@ function Blog() {
             })}
         </Container>
       </React.Fragment>
+      <Pagination>
+          <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "10px",
+          }}
+        >
+          <button
+            onClick={() => {
+              if( pageNumber - 1>=0)
+            { setPageNumber(
+                  pageNumber -1
+              );
+              }
+            }}
+          >
+            {"<"}
+          </button>
+          {filtered <= 6 ? (
+            <> 1</>
+          ) : (
+            Array.from(
+              { length: Math.ceil(filtered.length / blogPerPage) },
+              (x, i) => i
+            ).map((p) => <div>{p + 1}</div>)
+          )}
+          <button
+            onClick={() => {
+              if( Math.ceil(filtered.length / blogPerPage) > pageNumber + 1)
+            { setPageNumber(
+                  pageNumber + 1
+              );
+          }
+            }}
+          >
+            {">"}
+          </button>
+        </div>
+      </Pagination>
+      
     </div>
   );
 }
@@ -138,7 +203,7 @@ const Container = styled.div`
   @media (min-width: 768px) {
     display: grid;
     gap: 25px;
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     margin-top: 10rem;
     padding: 0 4rem;
   }
@@ -230,3 +295,7 @@ const SearchInput = styled.input`
   width: 284px;
   text-align: left;
 `;
+
+const Pagination = styled.div`
+  padding: 2rem;
+`

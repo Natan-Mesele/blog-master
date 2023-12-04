@@ -20,18 +20,16 @@ import emailjs from '@emailjs/browser';
     <div>
       <Containers>
       <Container>
+        <Form>
         <div className="App">
-          <h1 className="page__title">Contact Us</h1>
           <form className="contact__form" onSubmit={sendEmail}>
-            <label htmlFor="emailFrom">Email:</label>
+            <label htmlFor="emailFrom">Stay connected. Get news, updates, and information about ways we can all grow and protect the Internet.</label>
             <input type="text" name="email_from" id="emailFrom" className="email__from" placeholder="Your Email "/>
-            <label htmlFor="message">Message:</label>
-            <textarea name="message" id="message" className="message__box"></textarea>
-            <button variant="contained" endIcon={<SendIcon />} className="submit__btn" style={{marginTop: "5px"}}>
-            Send
+            <button variant="contained" endIcon={<SendIcon />} className="submit__btn" style={{marginTop: "5px"}}>Send
           </button>
           </form>
         </div>
+        </Form>
           <Media>
             <Twitter style={{ fontSize: '2.5rem' }} /> 
             <LinkedIn style={{ fontSize: '2.5rem' }} />
@@ -63,9 +61,17 @@ import emailjs from '@emailjs/browser';
 export default Footer
 
 const Containers = styled.div`
-  background: #24366e;
+  background: #0B1C2D;
 `
+const Form = styled.div`
+  background: #24366e;
+  margin: 1.5rem;
+  padding-bottom: 1.5rem;
 
+  @media(min-width: 768px){
+    margin: 2rem 10rem;
+  }
+`
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -78,26 +84,14 @@ const Container = styled.div`
   label {
     display: block;
     margin: 1rem 0;
-    
+    padding: .5rem 2rem;
+    line-height: 1.6;
   }
 
    input {
     display: block;
     align-items: center;
-    width: 80%;
-    margin: 0 auto;
-    padding: .5rem;
-    border: 1px solid gray;
-    border-radius: .3rem;
-    outline: none;
-  }
-
-  textarea {
-    display: block;
-    align-items: center;
-    margin-bottom: .5rem;
-    width: 80%;
-    height: 5rem;
+    width: 50%;
     margin: 0 auto;
     padding: .5rem;
     border: 1px solid gray;
@@ -107,17 +101,28 @@ const Container = styled.div`
   }
 
   button {
-    padding: .6rem 1.4rem;
+    padding: .6rem 1.6rem;
     border: none;
     border-radius: 5em;
     cursor: pointer;
+    background: lightgray;
+
+    &:hover {
+      background: white;
+    }
   }
 ` 
 
 const Media = styled.div`
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 1rem;
+
+  @media(min-width: 768px){
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+  }
 `
 
 const Facebook = styled(FacebookIcon)`
@@ -136,7 +141,7 @@ const Wifi = styled(RssFeedIcon)`
 const Footers = styled.div`
   display: flex;
   justify-content: center;
-  gap: 8rem;
+  gap: 6rem;
 `
 const FooterRow = styled.div`
   text-align: left;

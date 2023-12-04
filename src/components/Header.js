@@ -113,9 +113,9 @@ const RightMenu = styled.div`
     border: none;
     border-radius: 5rem;
     cursor: pointer;
+    border: 3px solid #eeca4a;
 
     &:hover {
-      border: 3px solid #eeca4a;
       background: none;
     }
   }
@@ -127,12 +127,11 @@ const RightMenu = styled.div`
 const CustomMenu = styled(MenuIcon)`
   cursor: pointer;
   color: white;
-  
 `
 const MenuWrapper = styled.div`
     @media (min-width: 767px){
         display: none;
-  }
+    }
 `
 const BurgerNav = styled.div`
   position: fixed;

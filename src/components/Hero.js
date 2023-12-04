@@ -54,10 +54,10 @@ const ItemText = styled.div`
         padding: .8rem 1.4rem;
         border-radius: 5em;
         font-weight: normal;
-        
+        border: 2px solid white;
+
         &:hover {
             background: none;
-            border: 2px solid white;
             color: white;
         }
     }
