@@ -30,7 +30,7 @@ function Header() {
   return (
     <Container scroll={scroll}>
         <a>
-          <img src="img/blog-high-resolution-logo-white-transparent.png" alt="logo"/>
+        <Link to="./"><img src="img/blog-high-resolution-logo-white-transparent.png" alt="logo"/></Link>
         </a>
         <Menu>
           <Link to="./">Home</Link>

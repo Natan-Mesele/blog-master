@@ -94,22 +94,26 @@ const ItemText = styled.div`
 `
 const Info = styled.div`
     background: rgb(239, 242, 236);
+    padding-top: 3rem;
 `
 const InfoList = styled.div`
     margin: .5rem;
     padding: 1rem;
 
+    h3, p {
+        text-align: left;
+    }
+
     @media(min-width: 768px){
         display: grid;
         gap: 50px;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        padding: 8rem;
+        padding: 0 8rem;
     }
 
     img {
         width: 100%;
         height: 100%;
         object-fit: contain;
-        
     }
 `

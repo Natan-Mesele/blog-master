@@ -56,6 +56,9 @@ import emailjs from '@emailjs/browser';
               <span>Live report</span>
             </FooterRow>
         </Footers>
+          <FootNote>
+            <p>© 2023 X Company</p>
+          </FootNote>
         </Containers>
       </div>
   )
@@ -65,6 +68,7 @@ export default Footer
 
 const Containers = styled.div`
   background: #0B1C2D;
+  height: 100vh;
 `
 const Form = styled.div`
   background: #24366e;
@@ -170,4 +174,10 @@ const FooterRow = styled.div`
     fill: red;
   }
 `
-
+const FootNote = styled.div`
+  p {
+    margin-top: 2rem;
+    color: gray;
+    font-size: .7rem;
+  }
+`
